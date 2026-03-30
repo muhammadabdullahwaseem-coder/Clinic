@@ -1,0 +1,13 @@
+{
+  "name": "medicare-clinic-server",
+  "version": "1.0.0",
+  "description": "MediCare Clinic - Express/MongoDB backend",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MediCare Clinic – Dr. Ahmed Raza | General Physician & Family Medicine, Lahore</title>
+  <meta name="description" content="MediCare Clinic offers expert general physician and family medicine services in Gulberg II, Lahore. Book an appointment with Dr. Ahmed Raza (MBBS, FCPS) today." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E3A5F',
+            'primary-light': '#2A5080',
+            'primary-dark': '#152B47',
+            accent: '#2E86AB',
+            'accent-light': '#3EA8CF',
+            light: '#F4F7FA',
+            muted: '#6B7A90',
+          },
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          boxShadow: {
+            card: '0 4px 24px rgba(30,58,95,0.08)',
+            'card-hover': '0 8px 40px rgba(30,58,95,0.16)',
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    * { scroll-behavior: smooth; }
+    html { font-family: 'Inter', sans-serif; }
+
+    /* Navbar */
+    #navbar { transition: box-shadow 0.3s, background 0.3s; }
+    #navbar.scrolled { box-shadow: 0 2px 20px rgba(30,58,95,0.12); }
+    .nav-link { position: relative; }
+    .nav-link::after { content:''; position:absolute; bottom:-2px; left:0; width:0; height:2px; background:#2E86AB; border-radius:2px; transition:width .3s; }
+    .nav-link:hover::after, .nav-link.active::after { width:100%; }
+
+    /* Hero */
+    .hero-bg {
+      background: linear-gradient(135deg, #1E3A5F 0%, #2A5080 50%, #1E3A5F 100%);
+      position: relative; overflow: hidden;
+    }
+    .hero-bg::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+    .hero-circle {
+      position: absolute; border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .trust-badge { transition: transform .2s; }
+    .trust-badge:hover { transform: translateY(-2px); }
+
+    /* Cards */
+    .service-card { transition: transform .3s, box-shadow .3s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 8px 40px rgba(30,58,95,0.16); }
+    .service-card .icon-wrap { transition: background .3s, color .3s; }
+    .service-card:hover .icon-wrap { background: #1E3A5F; color: #fff; }
+
+    .feature-card { transition: transform .3s, box-shadow .3s; }
+    .feature-card:hover { transform: translateY(-4px); box-shadow: 0 8px 40px rgba(30,58,95,0.12); }
+
+    .testimonial-card { transition: transform .3s, box-shadow .3s; }
+    .testimonial-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(30,58,95,0.14); }
+
+    /* Buttons */
+    .btn-primary {
+      background: #fff; color: #1E3A5F; font-weight: 700;
+      transition: background .25s, color .25s, transform .2s, box-shadow .2s;
+    }
+    .btn-primary:hover { background: #2E86AB; color: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(46,134,171,0.35); }
+
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,0.7); color: #fff; font-weight: 600;
+      transition: background .25s, border-color .25s, transform .2s;
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); border-color: #fff; transform: translateY(-2px); }
+
+    .btn-submit {
+      background: #1E3A5F; color: #fff; font-weight: 700;
+      transition: background .25s, transform .2s, box-shadow .2s;
+    }
+    .btn-submit:hover { background: #2A5080; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(30,58,95,0.3); }
+
+    /* Form */
+    .form-input { transition: border-color .2s, box-shadow .2s; }
+    .form-input:focus { outline: none; border-color: #2E86AB; box-shadow: 0 0 0 3px rgba(46,134,171,0.12); }
+
+    /* WhatsApp FAB */
+    #wa-fab { transition: transform .3s, box-shadow .3s; }
+    #wa-fab:hover { transform: scale(1.1); box-shadow: 0 8px 28px rgba(37,211,102,0.45); }
+
+    /* Mobile menu */
+    #mobile-menu { transition: max-height .35s ease, opacity .35s ease; max-height: 0; overflow: hidden; opacity: 0; }
+    #mobile-menu.open { max-height: 360px; opacity: 1; }
+
+    /* Success message */
+    #success-msg { display: none; }
+    #success-msg.show { display: flex; }
+
+    /* Section fade-in */
+    .fade-in { opacity: 0; transform: translateY(24px); transition: opacity .6s ease, transform .6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body class="bg-white text-gray-800">
+
+<!-- ===================== NAVBAR ===================== -->
+<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="flex items-center justify-between h-16 md:h-18">
+      <!-- Logo -->
+      <a href="#home" class="flex items-center gap-2 group" id="logo-link">
+        <div class="w-9 h-9 rounded-lg bg-primary flex items-center justify-center shadow-md group-hover:bg-accent transition-colors">
+          <i class="fas fa-stethoscope text-white text-sm"></i>
+        </div>
+        <span class="font-bold text-primary text-lg leading-tight">MediCare<br><span class="text-xs font-medium text-muted leading-none">Clinic</span></span>
+      </a>
+
+      <!-- Desktop Links -->
+      <div class="hidden md:flex items-center gap-7">
+        <a href="#home" class="nav-link active text-sm font-medium text-gray-700 hover:text-primary transition-colors">Home</a>
+        <a href="#about" class="nav-link text-sm font-medium text-gray-700 hover:text-primary transition-colors">About</a>
+        <a href="#services" class="nav-link text-sm font-medium text-gray-700 hover:text-primary transition-colors">Services</a>
+        <a href="#appointment" class="nav-link text-sm font-medium text-gray-700 hover:text-primary transition-colors">Appointments</a>
+        <a href="#contact" class="nav-link text-sm font-medium text-gray-700 hover:text-primary transition-colors">Contact</a>
+        <a href="#appointment" class="ml-2 px-5 py-2 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-light transition-colors shadow-sm">Book Now</a>
+      </div>
+
+      <!-- Hamburger -->
+      <button id="hamburger" class="md:hidden w-9 h-9 flex flex-col justify-center items-center gap-1.5" aria-label="Open menu">
+        <span id="bar1" class="block w-6 h-0.5 bg-primary rounded transition-all"></span>
+        <span id="bar2" class="block w-6 h-0.5 bg-primary rounded transition-all"></span>
+        <span id="bar3" class="block w-6 h-0.5 bg-primary rounded transition-all"></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div id="mobile-menu" class="md:hidden bg-white border-t border-gray-100 px-4">
+    <div class="py-3 flex flex-col gap-1">
+      <a href="#home" class="mobile-link block py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-light hover:text-primary transition-colors">Home</a>
+      <a href="#about" class="mobile-link block py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-light hover:text-primary transition-colors">About</a>
+      <a href="#services" class="mobile-link block py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-light hover:text-primary transition-colors">Services</a>
+      <a href="#appointment" class="mobile-link block py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-light hover:text-primary transition-colors">Appointments</a>
+      <a href="#contact" class="mobile-link block py-2.5 px-3 rounded-lg text-sm font-medium text-gray-700 hover:bg-light hover:text-primary transition-colors">Contact</a>
+      <a href="#appointment" class="mt-1 block py-2.5 px-3 rounded-lg text-sm font-semibold text-white bg-primary text-center">Book Now</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===================== HERO ===================== -->
+<section id="home" class="hero-bg min-h-screen flex flex-col justify-center pt-16 relative">
+  <!-- Decorative circles -->
+  <div class="hero-circle w-64 h-64 -top-16 -right-16 opacity-60"></div>
+  <div class="hero-circle w-96 h-96 -bottom-24 -left-24 opacity-40"></div>
+  <div class="hero-circle w-40 h-40 top-1/3 right-1/4 opacity-30"></div>
+
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 w-full py-16 relative z-10">
+    <div class="max-w-2xl">
+      <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6">
+        <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+        <span class="text-white/90 text-xs font-medium">Accepting New Patients</span>
+      </div>
+      <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4">
+        Your Health,<br><span class="text-accent-light">Our Priority</span>
+      </h1>
+      <p class="text-white/80 text-lg sm:text-xl font-medium mb-2">Dr. Ahmed Raza — MBBS, FCPS</p>
+      <p class="text-white/65 text-base mb-8">General Physician &amp; Family Medicine Specialist, providing compassionate and expert care for every patient.</p>
+
+      <div class="flex flex-wrap gap-3 mb-12">
+        <a href="#appointment" class="btn-primary px-7 py-3 rounded-lg text-sm inline-flex items-center gap-2 shadow-lg">
+          <i class="fas fa-calendar-check text-xs"></i> Book Appointment
+        </a>
+        <a href="#services" class="btn-outline px-7 py-3 rounded-lg text-sm inline-flex items-center gap-2">
+          <i class="fas fa-list-ul text-xs"></i> Our Services
+        </a>
+      </div>
+
+      <!-- Trust Badges -->
+      <div class="flex flex-wrap gap-3">
+        <div class="trust-badge flex items-center gap-2.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-4 py-3">
+          <div class="w-9 h-9 rounded-full bg-accent/30 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-award text-white text-sm"></i>
+          </div>
+          <div>
+            <p class="text-white font-bold text-sm">10+ Years</p>
+            <p class="text-white/60 text-xs">Experience</p>
+          </div>
+        </div>
+        <div class="trust-badge flex items-center gap-2.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-4 py-3">
+          <div class="w-9 h-9 rounded-full bg-accent/30 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-users text-white text-sm"></i>
+          </div>
+          <div>
+            <p class="text-white font-bold text-sm">5000+ Patients</p>
+            <p class="text-white/60 text-xs">Treated Successfully</p>
+          </div>
+        </div>
+        <div class="trust-badge flex items-center gap-2.5 bg-white/10 backdrop-blur border border-white/20 rounded-xl px-4 py-3">
+          <div class="w-9 h-9 rounded-full bg-accent/30 flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-clock text-white text-sm"></i>
+          </div>
+          <div>
+            <p class="text-white font-bold text-sm">Mon – Sat</p>
+            <p class="text-white/60 text-xs">10AM – 8PM</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Wave -->
+  <div class="absolute bottom-0 left-0 right-0">
+    <svg viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 80L60 69.3C120 59 240 37 360 32C480 27 600 37 720 48C840 59 960 69 1080 69.3C1200 69 1320 59 1380 53.3L1440 48V80H0Z" fill="#fff"/>
+    </svg>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section id="about" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-14 items-center">
+      <!-- Avatar column -->
+      <div class="fade-in flex justify-center lg:justify-start">
+        <div class="relative">
+          <div class="w-64 h-64 sm:w-80 sm:h-80 rounded-3xl bg-light flex items-center justify-center shadow-card overflow-hidden border border-gray-100">
+            <div class="flex flex-col items-center gap-3">
+              <div class="w-28 h-28 rounded-full bg-primary flex items-center justify-center shadow-lg">
+                <i class="fas fa-user-doctor text-white text-5xl mt-2"></i>
+              </div>
+              <div class="text-center px-4">
+                <p class="font-bold text-primary text-lg">Dr. Ahmed Raza</p>
+                <p class="text-muted text-xs font-medium">MBBS, FCPS</p>
+              </div>
+            </div>
+          </div>
+          <!-- Badge -->
+          <div class="absolute -bottom-4 -right-4 bg-primary rounded-2xl shadow-lg px-4 py-3 text-center">
+            <p class="text-white font-extrabold text-2xl leading-none">10+</p>
+            <p class="text-white/70 text-xs font-medium mt-0.5">Years Exp.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Text column -->
+      <div class="fade-in">
+        <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">About the Doctor</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-4 leading-tight">Meet Dr. Ahmed Raza</h2>
+        <p class="text-gray-600 text-base leading-relaxed mb-6">
+          Dr. Ahmed Raza is a highly qualified General Physician and Family Medicine Specialist with over a decade of clinical experience. He earned his MBBS from King Edward Medical University and completed his FCPS in Family Medicine, bringing world-class expertise to every consultation. His patient-first approach has earned him the trust of thousands of families across Lahore.
+        </p>
+        <ul class="space-y-3 text-sm text-gray-700 mb-8">
+          <li class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-graduation-cap text-accent text-xs"></i>
+            </div>
+            <span><strong>MBBS</strong> – King Edward Medical University, Lahore</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-certificate text-accent text-xs"></i>
+            </div>
+            <span><strong>FCPS (Family Medicine)</strong> – College of Physicians &amp; Surgeons Pakistan</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-hospital text-accent text-xs"></i>
+            </div>
+            <span>Former Senior Registrar at <strong>Services Hospital Lahore</strong></span>
+          </li>
+          <li class="flex items-start gap-3">
+            <div class="w-6 h-6 rounded-full bg-accent/10 flex items-center justify-center flex-shrink-0 mt-0.5">
+              <i class="fas fa-heart text-accent text-xs"></i>
+            </div>
+            <span>Holistic, evidence-based care with a focus on <strong>preventive medicine</strong></span>
+          </li>
+        </ul>
+        <a href="#appointment" class="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-white text-sm font-semibold hover:bg-primary-light transition-colors shadow-sm">
+          <i class="fas fa-calendar-check text-xs"></i> Book a Consultation
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SERVICES ===================== -->
+<section id="services" class="py-20 bg-light">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 fade-in">
+      <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">What We Offer</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-3">Our Services</h2>
+      <p class="text-muted text-base max-w-xl mx-auto">Comprehensive medical care tailored to every stage of life — for you and your entire family.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <!-- Card 1 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-stethoscope text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">General Checkup</h3>
+        <p class="text-muted text-sm leading-relaxed">Thorough head-to-toe examination to assess your overall health and catch issues early.</p>
+      </div>
+      <!-- Card 2 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-baby text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Child Healthcare</h3>
+        <p class="text-muted text-sm leading-relaxed">Pediatric consultations, growth monitoring, and illness management for children of all ages.</p>
+      </div>
+      <!-- Card 3 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-syringe text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Vaccinations</h3>
+        <p class="text-muted text-sm leading-relaxed">Recommended immunizations for children and adults following the latest health guidelines.</p>
+      </div>
+      <!-- Card 4 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-heartbeat text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Chronic Disease Management</h3>
+        <p class="text-muted text-sm leading-relaxed">Ongoing care for diabetes, hypertension, asthma, and other long-term conditions.</p>
+      </div>
+      <!-- Card 5 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-flask text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Lab Tests</h3>
+        <p class="text-muted text-sm leading-relaxed">In-house diagnostic lab for blood work, urine analysis, and other essential tests.</p>
+      </div>
+      <!-- Card 6 -->
+      <div class="service-card bg-white rounded-2xl shadow-card p-7 fade-in">
+        <div class="icon-wrap w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center mb-5 text-primary">
+          <i class="fas fa-house-medical text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Home Visits</h3>
+        <p class="text-muted text-sm leading-relaxed">Doctor visits at your doorstep for patients who are unable to travel to the clinic.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== WHY CHOOSE US ===================== -->
+<section id="why-us" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 fade-in">
+      <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">Why Us</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-3">Why Choose MediCare?</h2>
+      <p class="text-muted text-base max-w-xl mx-auto">We deliver healthcare that you can trust — built on expertise, compassion, and transparency.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="feature-card bg-light rounded-2xl p-7 text-center fade-in border border-gray-100">
+        <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-5 shadow-md">
+          <i class="fas fa-user-doctor text-white text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Experienced Doctor</h3>
+        <p class="text-muted text-sm leading-relaxed">Over a decade of clinical expertise in general and family medicine.</p>
+      </div>
+
+      <div class="feature-card bg-light rounded-2xl p-7 text-center fade-in border border-gray-100">
+        <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-5 shadow-md">
+          <i class="fas fa-microscope text-white text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Modern Equipment</h3>
+        <p class="text-muted text-sm leading-relaxed">State-of-the-art diagnostic tools and up-to-date medical technology.</p>
+      </div>
+
+      <div class="feature-card bg-light rounded-2xl p-7 text-center fade-in border border-gray-100">
+        <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-5 shadow-md">
+          <i class="fas fa-tags text-white text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Affordable Fees</h3>
+        <p class="text-muted text-sm leading-relaxed">Transparent pricing with no hidden charges — quality care within reach.</p>
+      </div>
+
+      <div class="feature-card bg-light rounded-2xl p-7 text-center fade-in border border-gray-100">
+        <div class="w-14 h-14 rounded-full bg-primary flex items-center justify-center mx-auto mb-5 shadow-md">
+          <i class="fas fa-face-smile text-white text-xl"></i>
+        </div>
+        <h3 class="font-bold text-primary text-lg mb-2">Friendly Staff</h3>
+        <p class="text-muted text-sm leading-relaxed">Warm, caring team dedicated to making every visit comfortable and stress-free.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== APPOINTMENT ===================== -->
+<section id="appointment" class="py-20 bg-light">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid lg:grid-cols-2 gap-12 items-start">
+      <!-- Info -->
+      <div class="fade-in">
+        <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">Get In Touch</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-4 leading-tight">Book an Appointment</h2>
+        <p class="text-muted text-base leading-relaxed mb-8">Fill out the form and our team will call you back to confirm your appointment. Same-day slots are often available.</p>
+        <div class="space-y-5">
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-phone text-white text-sm"></i>
+            </div>
+            <div>
+              <p class="text-xs text-muted font-medium">Call Us</p>
+              <a href="tel:03000000000" class="font-semibold text-primary hover:text-accent transition-colors">0300-0000000</a>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-clock text-white text-sm"></i>
+            </div>
+            <div>
+              <p class="text-xs text-muted font-medium">Clinic Hours</p>
+              <p class="font-semibold text-primary text-sm">Mon–Sat: 10AM–8PM &nbsp;|&nbsp; Sun: 11AM–3PM</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4">
+            <div class="w-10 h-10 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+              <i class="fas fa-location-dot text-white text-sm"></i>
+            </div>
+            <div>
+              <p class="text-xs text-muted font-medium">Address</p>
+              <p class="font-semibold text-primary text-sm">24-B Gulberg II, Lahore</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="fade-in">
+        <div class="bg-white rounded-2xl shadow-card p-8 border border-gray-100">
+          <form id="appt-form" novalidate>
+            <div class="space-y-4">
+              <div>
+                <label for="appt-name" class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Full Name <span class="text-red-500">*</span></label>
+                <input id="appt-name" type="text" placeholder="e.g. Muhammad Ali" class="form-input w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-light" />
+                <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter your full name.</p>
+              </div>
+              <div>
+                <label for="appt-phone" class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Phone Number <span class="text-red-500">*</span></label>
+                <input id="appt-phone" type="tel" placeholder="e.g. 0300-1234567" class="form-input w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-light" />
+                <p class="error-msg text-red-500 text-xs mt-1 hidden">Please enter a valid phone number.</p>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label for="appt-date" class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Preferred Date <span class="text-red-500">*</span></label>
+                  <input id="appt-date" type="date" class="form-input w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-light" />
+                  <p class="error-msg text-red-500 text-xs mt-1 hidden">Please select a date.</p>
+                </div>
+                <div>
+                  <label for="appt-time" class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Preferred Time <span class="text-red-500">*</span></label>
+                  <select id="appt-time" class="form-input w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-light">
+                    <option value="">Select time</option>
+                    <option>10:00 AM</option>
+                    <option>11:00 AM</option>
+                    <option>12:00 PM</option>
+                    <option>01:00 PM</option>
+                    <option>02:00 PM</option>
+                    <option>03:00 PM</option>
+                    <option>04:00 PM</option>
+                    <option>05:00 PM</option>
+                    <option>06:00 PM</option>
+                    <option>07:00 PM</option>
+                  </select>
+                  <p class="error-msg text-red-500 text-xs mt-1 hidden">Please select a time.</p>
+                </div>
+              </div>
+              <div>
+                <label for="appt-reason" class="block text-xs font-semibold text-gray-600 mb-1.5 uppercase tracking-wide">Reason for Visit <span class="text-red-500">*</span></label>
+                <textarea id="appt-reason" rows="3" placeholder="Briefly describe your concern..." class="form-input w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm text-gray-800 bg-light resize-none"></textarea>
+                <p class="error-msg text-red-500 text-xs mt-1 hidden">Please describe your reason for visiting.</p>
+              </div>
+              <button type="submit" id="appt-submit" class="btn-submit w-full py-3 rounded-lg text-sm flex items-center justify-center gap-2 mt-2">
+                <i class="fas fa-calendar-check text-xs"></i> Book Appointment
+              </button>
+            </div>
+          </form>
+
+          <!-- Success -->
+          <div id="success-msg" class="hidden flex-col items-center justify-center text-center py-8 gap-4">
+            <div class="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center">
+              <i class="fas fa-check text-green-500 text-2xl"></i>
+            </div>
+            <div>
+              <h3 class="font-bold text-primary text-xl mb-1">Appointment Booked!</h3>
+              <p class="text-muted text-sm">We'll call you to confirm your slot. Thank you for choosing MediCare Clinic.</p>
+            </div>
+            <button id="book-another" class="mt-2 text-accent text-sm font-semibold hover:underline">Book Another Appointment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="testimonials" class="py-20 bg-white">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 fade-in">
+      <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">Patient Reviews</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-3">What Our Patients Say</h2>
+      <p class="text-muted text-base max-w-xl mx-auto">Hearing from the people we care for is our greatest reward.</p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div class="testimonial-card bg-light border border-gray-100 rounded-2xl p-7 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">"Dr. Ahmed is incredibly thorough and patient. He took the time to explain everything and didn't rush me out. My blood pressure is finally under control after months of struggling. Highly recommended!"</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-user text-white text-xs"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-primary text-sm">Patient A</p>
+            <p class="text-muted text-xs">Gulberg, Lahore</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-light border border-gray-100 rounded-2xl p-7 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">"Brought my children here for vaccinations and the entire experience was smooth and stress-free. The staff are so welcoming and the doctor was brilliant with the kids. We won't go anywhere else."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-user text-white text-xs"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-primary text-sm">Patient B</p>
+            <p class="text-muted text-xs">Model Town, Lahore</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card bg-light border border-gray-100 rounded-2xl p-7 fade-in">
+        <div class="flex items-center gap-1 mb-4">
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star text-yellow-400 text-sm"></i><i class="fas fa-star text-yellow-400 text-sm"></i>
+          <i class="fas fa-star-half-alt text-yellow-400 text-sm"></i>
+        </div>
+        <p class="text-gray-600 text-sm leading-relaxed mb-6">"The home visit service is a lifesaver! My elderly mother couldn't make it to the clinic and Dr. Raza came over and was absolutely professional. Fees are very reasonable too. Will definitely recommend to family."</p>
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+            <i class="fas fa-user text-white text-xs"></i>
+          </div>
+          <div>
+            <p class="font-semibold text-primary text-sm">Patient C</p>
+            <p class="text-muted text-xs">DHA, Lahore</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== CONTACT ===================== -->
+<section id="contact" class="py-20 bg-light">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 fade-in">
+      <span class="inline-block text-accent text-xs font-bold uppercase tracking-widest mb-3">Find Us</span>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-primary mb-3">Contact & Location</h2>
+      <p class="text-muted text-base max-w-xl mx-auto">We're conveniently located in Gulberg II, Lahore and available 6 days a week.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-10 items-start">
+      <!-- Contact Info -->
+      <div class="fade-in space-y-6">
+        <div class="bg-white rounded-2xl shadow-card p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+              <i class="fas fa-location-dot text-white"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-primary mb-1">Address</p>
+              <p class="text-gray-600 text-sm">24-B Gulberg II, Lahore, Punjab, Pakistan</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-card p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+              <i class="fas fa-phone text-white"></i>
+            </div>
+            <div>
+              <p class="font-semibold text-primary mb-1">Phone</p>
+              <a href="tel:03000000000" class="text-accent font-semibold hover:underline">0300-0000000</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl shadow-card p-6 border border-gray-100">
+          <div class="flex items-start gap-4">
+            <div class="w-11 h-11 rounded-xl bg-primary flex items-center justify-center flex-shrink-0 shadow-sm">
+              <i class="fas fa-clock text-white"></i>
+            </div>
+            <div class="w-full">
+              <p class="font-semibold text-primary mb-3">Clinic Hours</p>
+              <table class="w-full text-sm">
+                <tbody class="divide-y divide-gray-100">
+                  <tr>
+                    <td class="py-1.5 text-gray-600">Monday – Friday</td>
+                    <td class="py-1.5 text-right font-medium text-primary">10:00 AM – 8:00 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 text-gray-600">Saturday</td>
+                    <td class="py-1.5 text-right font-medium text-primary">10:00 AM – 8:00 PM</td>
+                  </tr>
+                  <tr>
+                    <td class="py-1.5 text-gray-600">Sunday</td>
+                    <td class="py-1.5 text-right font-medium text-primary">11:00 AM – 3:00 PM</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <a href="https://wa.me/923000000000?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment" target="_blank" rel="noopener" class="flex items-center justify-center gap-3 w-full py-3.5 rounded-xl bg-green-500 hover:bg-green-600 text-white font-semibold text-sm transition-colors shadow-md">
+          <i class="fab fa-whatsapp text-lg"></i> Chat on WhatsApp
+        </a>
+      </div>
+
+      <!-- Map Placeholder -->
+      <div class="fade-in">
+        <div class="rounded-2xl overflow-hidden shadow-card border border-gray-200 bg-white h-full min-h-80">
+          <iframe
+            title="MediCare Clinic Location"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.2984838538657!2d74.33750027537506!3d31.515684874225937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904be6e20fc07%3A0x29e57e76c4f91a8d!2sGulberg%20II%2C%20Lahore!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s"
+            width="100%" height="100%" style="min-height:320px; border:0;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="bg-primary-dark text-white py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid sm:grid-cols-3 gap-8 mb-10">
+      <!-- Brand -->
+      <div>
+        <div class="flex items-center gap-2 mb-4">
+          <div class="w-9 h-9 rounded-lg bg-accent flex items-center justify-center shadow">
+            <i class="fas fa-stethoscope text-white text-sm"></i>
+          </div>
+          <span class="font-bold text-lg">MediCare Clinic</span>
+        </div>
+        <p class="text-white/50 text-sm leading-relaxed">Your trusted partner in health — delivering expert, compassionate medical care for every family.</p>
+      </div>
+
+      <!-- Quick Links -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider mb-4 text-white/70">Quick Links</h4>
+        <ul class="space-y-2">
+          <li><a href="#home" class="text-white/50 hover:text-white text-sm transition-colors">Home</a></li>
+          <li><a href="#about" class="text-white/50 hover:text-white text-sm transition-colors">About Doctor</a></li>
+          <li><a href="#services" class="text-white/50 hover:text-white text-sm transition-colors">Services</a></li>
+          <li><a href="#appointment" class="text-white/50 hover:text-white text-sm transition-colors">Book Appointment</a></li>
+          <li><a href="#contact" class="text-white/50 hover:text-white text-sm transition-colors">Contact</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact -->
+      <div>
+        <h4 class="font-semibold text-sm uppercase tracking-wider mb-4 text-white/70">Contact</h4>
+        <ul class="space-y-2 text-sm">
+          <li class="flex items-center gap-2 text-white/50"><i class="fas fa-location-dot w-4"></i>24-B Gulberg II, Lahore</li>
+          <li class="flex items-center gap-2 text-white/50"><i class="fas fa-phone w-4"></i><a href="tel:03000000000" class="hover:text-white transition-colors">0300-0000000</a></li>
+          <li class="flex items-center gap-2 text-white/50"><i class="fas fa-clock w-4"></i>Mon–Sat: 10AM–8PM</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-2">
+      <p class="text-white/30 text-xs">&copy; 2025 MediCare Clinic. All rights reserved.</p>
+      <p class="text-white/30 text-xs">Dr. Ahmed Raza — MBBS, FCPS | General Physician</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================== WHATSAPP FAB ===================== -->
+<a id="wa-fab" href="https://wa.me/923000000000?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment"
+   target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-green-500 flex items-center justify-center shadow-xl"
+   aria-label="Chat on WhatsApp">
+  <i class="fab fa-whatsapp text-white text-2xl"></i>
+</a>
+
+<!-- ===================== JAVASCRIPT ===================== -->
+<script>
+  // --- Navbar scroll effect ---
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  });
+
+  // --- Active nav link on scroll ---
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('a.nav-link');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`a.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+  sections.forEach(s => observer.observe(s));
+
+  // --- Hamburger menu ---
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let menuOpen = false;
+
+  hamburger.addEventListener('click', () => {
+    menuOpen = !menuOpen;
+    mobileMenu.classList.toggle('open', menuOpen);
+    bar1.style.transform = menuOpen ? 'rotate(45deg) translate(5px,5px)' : '';
+    bar2.style.opacity = menuOpen ? '0' : '1';
+    bar3.style.transform = menuOpen ? 'rotate(-45deg) translate(5px,-5px)' : '';
+  });
+
+  document.querySelectorAll('.mobile-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      bar1.style.transform = '';
+      bar2.style.opacity = '1';
+      bar3.style.transform = '';
+    });
+  });
+
+  // --- Set min date for appointment ---
+  const dateInput = document.getElementById('appt-date');
+  const today = new Date();
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  dateInput.setAttribute('min', `${yyyy}-${mm}-${dd}`);
+
+  // --- Appointment form validation ---
+  const form = document.getElementById('appt-form');
+  const successMsg = document.getElementById('success-msg');
+
+  function showError(input, msg) {
+    const errEl = input.parentElement.querySelector('.error-msg');
+    if (errEl) { errEl.textContent = msg; errEl.classList.remove('hidden'); }
+    input.classList.add('border-red-400');
+  }
+  function clearError(input) {
+    const errEl = input.parentElement.querySelector('.error-msg');
+    if (errEl) errEl.classList.add('hidden');
+    input.classList.remove('border-red-400');
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const nameEl = document.getElementById('appt-name');
+    const phoneEl = document.getElementById('appt-phone');
+    const dateEl = document.getElementById('appt-date');
+    const timeEl = document.getElementById('appt-time');
+    const reasonEl = document.getElementById('appt-reason');
+
+    [nameEl, phoneEl, dateEl, timeEl, reasonEl].forEach(clearError);
+
+    let valid = true;
+    if (!nameEl.value.trim()) { showError(nameEl, 'Please enter your full name.'); valid = false; }
+    if (!phoneEl.value.trim() || !/^[\d\-\+\s]{7,}$/.test(phoneEl.value.trim())) { showError(phoneEl, 'Please enter a valid phone number.'); valid = false; }
+    if (!dateEl.value) { showError(dateEl, 'Please select a date.'); valid = false; }
+    if (!timeEl.value) { showError(timeEl, 'Please select a time.'); valid = false; }
+    if (!reasonEl.value.trim()) { showError(reasonEl, 'Please describe your reason for visiting.'); valid = false; }
+
+    if (valid) {
+      form.style.display = 'none';
+      successMsg.classList.remove('hidden');
+      successMsg.classList.add('show');
+    }
+  });
+
+  document.getElementById('book-another').addEventListener('click', () => {
+    form.reset();
+    form.style.display = '';
+    successMsg.classList.add('hidden');
+    successMsg.classList.remove('show');
+  });
+
+  // --- Scroll fade-in ---
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => fadeObserver.observe(el));
+</script>
+</body>
+</html>
