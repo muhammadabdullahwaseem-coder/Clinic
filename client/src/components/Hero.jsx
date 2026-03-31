@@ -23,7 +23,7 @@ export default function Hero() {
         <div className="max-w-2xl">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur border border-white/20 rounded-full px-4 py-1.5 mb-6">
-            <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse" />
+            <div className="pulse-dot rounded-full bg-green-400" style={{ width: 10, height: 10, flexShrink: 0 }} />
             <span className="text-white/90 text-xs font-medium">Accepting New Patients</span>
           </div>
 

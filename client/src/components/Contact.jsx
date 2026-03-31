@@ -50,6 +50,7 @@ export default function Contact() {
               </div>
               <div>
                 <p className="font-semibold text-[#1E3A5F] mb-1">Phone</p>
+                {/* REPLACE WITH REAL PHONE NUMBER */}
                 <a href="tel:03000000000" className="text-[#2E86AB] font-semibold hover:underline">0300-0000000</a>
               </div>
             </div>
@@ -75,6 +76,7 @@ export default function Contact() {
             </div>
 
             {/* WhatsApp */}
+            {/* REPLACE WITH REAL PHONE NUMBER */}
             <a
               href="https://wa.me/923000000000?text=Hi%2C%20I%27d%20like%20to%20book%20an%20appointment"
               target="_blank" rel="noopener noreferrer"
@@ -89,10 +91,10 @@ export default function Contact() {
             <div className="rounded-2xl overflow-hidden shadow-[0_4px_24px_rgba(30,58,95,0.08)] border border-gray-200 bg-white h-full min-h-80">
               <iframe
                 title="MediCare Clinic Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3402.2984838538657!2d74.33750027537506!3d31.515684874225937!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x391904be6e20fc07%3A0x29e57e76c4f91a8d!2sGulberg%20II%2C%20Lahore!5e0!3m2!1sen!2s!4v1680000000000!5m2!1sen!2s"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3401.405!2d74.3587!3d31.5204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzHCsDMxJzEzLjQiTiA3NMKwMjEnMzEuMyJF!5e0!3m2!1sen!2s!4v1234567890"
                 width="100%"
-                height="100%"
-                style={{ minHeight: '320px', border: 0 }}
+                height="220"
+                style={{ border: 0, borderRadius: 12, marginTop: 16, minHeight: '320px' }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"

@@ -4,15 +4,15 @@ import { faStar, faStarHalfAlt, faUser } from '@fortawesome/free-solid-svg-icons
 
 const reviews = [
   {
-    name: 'Patient A', location: 'Gulberg, Lahore', stars: 5,
+    name: 'Hina K.', location: 'Gulberg, Lahore', stars: 5,
     text: '"Dr. Ahmed is incredibly thorough and patient. He took the time to explain everything and didn\'t rush me out. My blood pressure is finally under control after months of struggling. Highly recommended!"',
   },
   {
-    name: 'Patient B', location: 'Model Town, Lahore', stars: 5,
+    name: 'Tariq M.', location: 'Model Town, Lahore', stars: 5,
     text: '"Brought my children here for vaccinations and the entire experience was smooth and stress-free. The staff are so welcoming and the doctor was brilliant with the kids. We won\'t go anywhere else."',
   },
   {
-    name: 'Patient C', location: 'DHA, Lahore', stars: 4.5,
+    name: 'Sara A.', location: 'DHA, Lahore', stars: 4.5,
     text: '"The home visit service is a lifesaver! My elderly mother couldn\'t make it to the clinic and Dr. Raza came over and was absolutely professional. Fees are very reasonable too. Will definitely recommend."',
   },
 ];

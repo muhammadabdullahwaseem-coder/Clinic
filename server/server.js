@@ -15,6 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
+app.get('/', (req, res) => res.send('MediCare Clinic API is running... ✨'));
 app.use('/api/appointments', appointmentRoutes);
 app.use('/api/admin', adminRoutes);
 

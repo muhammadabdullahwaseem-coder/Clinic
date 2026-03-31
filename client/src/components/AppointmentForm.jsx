@@ -75,7 +75,12 @@ export default function AppointmentForm() {
             </p>
             <div className="space-y-5">
               {[
-                { icon: faPhone, label: 'Call Us', content: <a href="tel:03000000000" className="font-semibold text-[#1E3A5F] hover:text-[#2E86AB] transition-colors">0300-0000000</a> },
+                { icon: faPhone, label: 'Call Us', content: (
+                  <>
+                    {/* REPLACE WITH REAL PHONE NUMBER */}
+                    <a href="tel:03000000000" className="font-semibold text-[#1E3A5F] hover:text-[#2E86AB] transition-colors">0300-0000000</a>
+                  </>
+                )},
                 { icon: faClock, label: 'Clinic Hours', content: <p className="font-semibold text-[#1E3A5F] text-sm">Mon–Sat: 10AM–8PM &nbsp;|&nbsp; Sun: 11AM–3PM</p> },
                 { icon: faLocationDot, label: 'Address', content: <p className="font-semibold text-[#1E3A5F] text-sm">24-B Gulberg II, Lahore</p> },
               ].map((item, i) => (

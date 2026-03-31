@@ -57,6 +57,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faLocationDot} className="w-4" />
                 24-B Gulberg II, Lahore
               </li>
+              {/* REPLACE WITH REAL PHONE NUMBER */}
               <li className="flex items-center gap-2 text-white/50">
                 <FontAwesomeIcon icon={faPhone} className="w-4" />
                 <a href="tel:03000000000" className="hover:text-white transition-colors">0300-0000000</a>
